@@ -1,0 +1,134 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小懵文案裂变系统</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/generator.css'%}">
+</head>
+<body>
+
+
+
+       <nav class="navbar navbar-dark bg-dark fixed-top">
+         <!-- Navbar content -->
+            <a class="navbar-brand" href="#">
+             <img src="{% static 'image/logo.png'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+             小懵文案裂变系统
+            </a>
+            <a class="navbar-brand" href="/admin">后台管理</a>
+       </nav>
+  
+      <div class="container">
+      <div id="blank"></div>
+       <div class="row">
+                 <h4>文案模版</h4>
+                 <div class="table-wrap">
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">标题</th>
+                        <th scope="col">内容</th>
+                        <th scope="col"><a class="btn btn-primary btn-sm" id="fileall">全选</a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for file in files %}
+                      <tr>
+                        <th scope="row">{{file.id}}</th>
+                        <td>{{file.title}}</td>
+                        <td>
+                            {{file.content}}
+                        </td>
+                          <td><input class="file-input" id="file_{{file.id}}" type="checkbox"></td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                 </div>
+       </div>
+
+           <div class="row">
+                 <h4>文案人设</h4>
+                 <div class="table-wrap">
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">系列</th>
+                          <th scope="col">自称</th>
+                          <th scope="col">粉丝</th>
+                          <th scope="col">打招呼</th>
+                          <th scope="col">提问</th>
+                          <th scope="col">称赞</th>
+                          <th scope="col">吐槽</th>
+                          <th scope="col">口癖1</th>
+                          <th scope="col">口癖2</th>
+                          <th scope="col">下集预告</th>
+                          <th scope="col">关注点赞</th>
+                          <th scope="col"><a class="btn btn-primary btn-sm" id="profileall">全选</a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for profile in profiles %}
+                      <tr>
+                        <th scope="row">{{profile.id}}</th>
+                          <td>{{profile.series}}</td>
+                          <td>{{profile.self}}</td>
+                          <td>{{profile.fans}}</td>
+                          <td>{{profile.greeting}}</td>
+                          <td>{{profile.question}}</td>
+                          <td>{{profile.praise}}</td>
+                          <td>{{profile.tucao}}</td>
+                          <td>{{profile.koupi1}}</td>
+                          <td>{{profile.koupi2}}</td>
+                          <td>{{profile.next}}</td>
+                          <td>{{profile.end}}</td>
+                          <td><input class="profile-input" name="profile_{{profile.id}}" type="checkbox"></td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                 </div>   
+           </div>
+
+
+          <div class="row">
+                 <h4>新文案</h4>
+                 <div class="table">
+
+                 </div>
+                   <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">文案模板</th>
+                            <th scope="col">人设模版</th>
+                            <th scope="col">内容</th>
+                            <th scope="col"><a class="newfile-input btn btn-primary btn-sm" id="newfileall">全选</a></th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbody">
+                        
+                      </tbody>
+                    </table>
+           </div>
+            
+
+    </div>
+            {% csrf_token %}
+            <a id="newfile" class="btn btn-danger">裂变</a>
+            <a id="save" class="btn btn-primary">保存</a>
+            <div id="prompt">温馨提示：#裂变方法# 选择想要裂变的文案模版和相应的人设模版，点击裂变按钮生成裂变文案，然后点击保存将新文案保存到数据库</div>
+
+
+
+       <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+       <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+       <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script src="{% static 'js/generator.js'%}"></script>
+</body>
+</html>

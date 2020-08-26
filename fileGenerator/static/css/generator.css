@@ -1,0 +1,51 @@
+#blank{
+   height:70px;
+}
+/* .table-wrap{
+    height:400px;
+    overflow:auto;
+} */
+/* table{
+   font-size:12px;
+   table-layout:fixed;
+}
+table tbody{
+    display:block;
+    height:400px;
+    overflow-y:scroll;
+} */
+table{
+    display: block;
+    height: 400px;
+    overflow-y: auto;
+    font-size:12px;
+}
+table thead, tbody tr{
+    /* display:table; */
+    /* table-layout:fixed; */
+    width:100%; 
+}
+table thead{
+width: calc( 100% - 1.2em )
+}
+
+
+#newfile{
+    position: fixed;
+    right:100px;
+    top:300px;
+    border-radius:20px;
+}
+#save{
+    position: fixed;
+    right:100px;
+    top:350px;
+    border-radius:20px;
+}
+#prompt{
+    width:200px;
+    height:100px;
+    position: fixed;
+    left:30px;
+    top:150px;
+}
