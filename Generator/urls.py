@@ -6,4 +6,6 @@ urlpatterns = [
      path('generate/', views.fission),
      path('search/', views.search),
      path('savenewfile/', views.savenewfile),
+     path('upload/', views.upload),
+     path('upload/excel/', views.uploadexcel)
 ]

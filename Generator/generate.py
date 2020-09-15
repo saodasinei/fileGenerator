@@ -56,7 +56,7 @@ def generate(files, profiles):
 
                     new = greeting + news + end
 
-                    print(new)
+                    # print(new)
 
                     newfile["newfile_content"] = new
                     newfilearr.append(newfile)

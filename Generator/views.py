@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.decorators import csrf
 from DB import models
 from . import generate
+import pandas as pd
 
 
 # Create your views here.
@@ -37,6 +38,16 @@ def fission(request):
 
 
 def savenewfile(request):
+    return HttpResponse("200")
+
+
+def upload(request):
+    return render(request, 'upload.html')
+
+
+def uploadexcel(request):
+    excel_raw_data = pd.read_excel(request.FILES.get('excel_data'))
+    print(excel_raw_data)
     return HttpResponse("200")
 
 
