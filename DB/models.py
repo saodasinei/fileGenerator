@@ -45,3 +45,30 @@ class Newfile(models.Model):
 
     class Meta:
         verbose_name_plural = '新文案'
+
+
+class PartTimer(models.Model):
+    account = models.CharField(u'用户名', max_length=30)
+    passowrd = models.CharField(u'密码', max_length=20)
+    name = models.CharField(u'名称', max_length=20)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = '兼职人员'
+
+
+class UploadFile(models.Model):
+    template_id = models.ForeignKey(File, on_delete=models.CASCADE, verbose_name="文案模版")
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="人设")
+    parttimer_id = models.ForeignKey(PartTimer, on_delete=models.CASCADE, verbose_name="兼职ID")
+    createdata = models.DateTimeField(u'上传时间', auto_now_add=True)
+    content = models.TextField(u'内容', default='请添加内容')
+    status = models.BooleanField(u'状态', choices=((0, '通过'), (1, '不通过')), null=True)
+
+    def __str__(self):
+        return self.createdata
+
+    class Meta:
+        verbose_name_plural = '上传文案列表'

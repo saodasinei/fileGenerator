@@ -47,8 +47,38 @@ def upload(request):
 
 def uploadexcel(request):
     excel_raw_data = pd.read_excel(request.FILES.get('excel_data'))
-    print(excel_raw_data)
-    return HttpResponse("200")
+    profiles = excel_raw_data.iloc[1:2, :].values
+    profile = {
+            "series": profiles[0][1],
+            "self": profiles[0][2],
+            "fans": profiles[0][3],
+            "greeting": profiles[0][4],
+            "question": profiles[0][5],
+            "praise": profiles[0][6],
+            "tucao": profiles[0][7],
+            "koupi1": profiles[0][8],
+            "next": profiles[0][9],
+            "end": profiles[0][10],
+    }
+    print(profile)
+    fileid = excel_raw_data.iloc[5:, 0:1].values
+    files = excel_raw_data.iloc[5:, 1:2].values
+    newfiles = excel_raw_data.iloc[5:, 6:7].values
+    file_list = []
+    for i in range(len(fileid)):
+        file = {"id": i+1, "file": files[i][0], "newfile": newfiles[i][0]}
+        file_list.append(file)
+    print(file_list)
+    # print(fileid)
+    # print(files)
+    # print(newfiles)
+
+    # return HttpResponse("200")
+    return render(request, 'upload_checking.html', {"profile": profile, "files": file_list})
+
+
+def history(request):
+    return render(request, 'upload_history.html')
 
 
 def search(request):

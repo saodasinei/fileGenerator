@@ -1,0 +1,77 @@
+/* 左侧边栏 */
+#sidebar{
+   height:945px;
+   background-color:#52607F;
+   padding:0px;
+}
+#profile_photo{
+   width:40px;
+   height:40px;
+   margin-top:20px;
+   margin-left:50px;
+}
+#user_name{
+   color:#ffffff;
+   margin-top:20px;
+   margin-left:38px;
+}
+#side_list{
+   width:100%;
+   list-style:none;
+   color:#ffffff;
+   padding:0px;
+   margin-top:20px;
+}
+#side_list li{
+   height:40px;
+   padding-top:10px;
+}
+#side_list a{
+   text-decoration:none;
+   color:#ffffff;
+}
+.side_img{
+   width:15px;
+   height:15px;
+   margin-right:10px;
+   margin-left:20px;
+}
+.listactive{
+   background-color:#487FFE;
+}
+
+/* 右侧内容 */
+/* 显示/隐藏 */
+.content_active{
+   display:block;
+}
+.content_disactive{
+   display:none;
+}
+
+/* 上传历史列表 */
+#upload_list{
+   border-style:solid;
+   border-width:1px;
+   border-color:#cccccc;
+   padding:0px;
+   padding-top:10px;
+}
+#upload_list input{
+   width:270px;
+   height:30px;
+   margin-left:25px;
+}
+.upload_list_item{
+   height:55px;
+   text-align:center;
+   padding-top:15px;
+}
+.mouseover{
+   background-color:#cccccc;
+}
+.selected{
+   background-color:#e6e6e6;
+}
+
+

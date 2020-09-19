@@ -7,5 +7,6 @@ urlpatterns = [
      path('search/', views.search),
      path('savenewfile/', views.savenewfile),
      path('upload/', views.upload),
-     path('upload/excel/', views.uploadexcel)
+     path('upload/excel/', views.uploadexcel),
+     path('upload/history/',views.history)
 ]

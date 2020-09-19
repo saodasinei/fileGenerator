@@ -1,10 +1,102 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>文案查重</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/generator.css'%}">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
 </head>
 <body>
-$END$
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="sidebar" class="col">
+                <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                <h6 id="user_name">兼职小萌</h6>
+                <ul id="side_list" class="">
+                  <li id="file-upload" class="listactive"><a href="/upload/"> <img class="side_img" src="{% static 'image/file_upload.png'%}" alt="">文案提交</a></li>
+                  <li id="file-history" class=""><a href="/upload/history/"><img class="side_img" src="{% static 'image/file_history.png'%}" alt=""> 提交历史</li>
+                </ul>
+            </div>
+
+            <div id="content" class="col-11">
+                  <!-- checking -->
+                   <div id="file_checking">
+                      <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/upload/">文案提交</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">查重</li>
+                        </ol>
+                      </nav>
+
+                      <div class="row">
+                         <div class="col">
+                             <h4>重复率:</h4>
+                         </div>
+                         <div class="col">
+                             <a class="btn btn-primary" href="">保存</a>
+                         </div>
+                      </div>
+
+                      <div class="profile">
+                        <h4>人设</h4>
+                        <h6>系列:<span class="badge badge-secondary">{{profile.series}}</span></h6>
+                        <h6>自称:<span class="badge badge-secondary">{{profile.self}}</span></h6>
+                        <h6>粉丝:<span class="badge badge-secondary">{{profile.fans}}</span></h6>
+                        <h6>问候:<span class="badge badge-secondary">{{profile.greeting}}</span></h6>
+                        <h6>提问:<span class="badge badge-secondary">{{profile.question}}</span></h6>
+                        <h6>称赞:<span class="badge badge-secondary">{{profile.praise}}</span></h6>
+                        <h6>系列:<span class="badge badge-secondary">{{profile.tucao}}</span></h6>
+                        <h6>吐槽:<span class="badge badge-secondary">{{profile.koupi1}}</span></h6>
+                        <h6>下期:<span class="badge badge-secondary">{{profile.next}}</span></h6>
+                        <h6>结束:<span class="badge badge-secondary">{{profile.end}}</span></h6>
+                      </div>
+
+                      <div class="file_content">
+                        <h4>文案</h4>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">文案模版</th>
+                                <th scope="col">新文案</th>
+                                <th scope="col">操作</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for file in files %}
+                              <tr>
+                                <th scope="row">{{file.id}}</th>
+                                <td>{{file.file}}</td>
+                                <td>{{file.newfile}}</td>
+                                <td><a class="btn btn-primary" href="">编辑</a></td>
+                              </tr>
+                                {% endfor %}
+                            </tbody>
+                          </table>
+                      </div>
+                     <!-- checking -->
+                   </div>
+                  <!-- content -->
+              </div>
+             <!-- row -->
+           </div>
+        <!--        container-->
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/generator.js'%}"></script>
 </body>
 </html>
