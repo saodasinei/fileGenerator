@@ -25,18 +25,12 @@
 
               <input type="search" class="form-control ds-input" placeholder="搜索"/>
 
-               <div class="upload_list_item">
-                 2020/09/08/16:00 土豪4
+               {% for item in uploadlist %}
+               <div id="{{item.id}}" class="upload_list_item">
+                   {{item.createdate}}/
+                   <span class="badge badge-secondary">{{item.profile_id}}</span>
                </div>
-               <div class="upload_list_item">
-                2020/09/08/16:00  东北1
-              </div>
-              <div class="upload_list_item">
-                2020/09/08/16:00  御姐2
-              </div>
-              <div class="upload_list_item">
-                2020/09/08/16:00  萝莉3
-              </div>
+               {% endfor %}
             </div>
 
              <div id="content" class="col">
@@ -45,6 +39,7 @@
                    
                       <div class="profile">
                         <h4>人设</h4>
+                        <h6>编号:<span class="badge badge-secondary">{{profile.number}}</span></h6>
                         <h6>系列:<span class="badge badge-secondary">{{profile.series}}</span></h6>
                         <h6>自称:<span class="badge badge-secondary">{{profile.self}}</span></h6>
                         <h6>粉丝:<span class="badge badge-secondary">{{profile.fans}}</span></h6>
@@ -52,7 +47,7 @@
                         <h6>提问:<span class="badge badge-secondary">{{profile.question}}</span></h6>
                         <h6>称赞:<span class="badge badge-secondary">{{profile.praise}}</span></h6>
                         <h6>系列:<span class="badge badge-secondary">{{profile.tucao}}</span></h6>
-                        <h6>吐槽:<span class="badge badge-secondary">{{profile.koupi1}}</span></h6>
+                        <h6>吐槽:<span class="badge badge-secondary">{{profile.koupi}}</span></h6>
                         <h6>下期:<span class="badge badge-secondary">{{profile.next}}</span></h6>
                         <h6>结束:<span class="badge badge-secondary">{{profile.end}}</span></h6>
                       </div>
