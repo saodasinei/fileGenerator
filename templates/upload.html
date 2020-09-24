@@ -16,8 +16,8 @@
                 <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
                 <h6 id="user_name">兼职小萌</h6>
                 <ul id="side_list" class="">
-                    <li id="file_upload" class="listactive"><a href="/upload/"> <img class="side_img" src="{% static 'image/file_upload.png'%}" alt="">文案提交</a></li>
-                    <li id="file_history" class=""><a href="/upload/history/"><img class="side_img" src="{% static 'image/file_history.png'%}" alt=""> 提交历史</li>
+                    <li id="file_upload" class="listactive"><a href="/file/upload/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案提交</a></li>
+                    <li id="file_history" class=""><a href="/file/upload/history/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">提交历史</li>
                 </ul>
 
             </div>
@@ -28,11 +28,11 @@
                    <div id="file-_upload">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page"><a href="/upload/">文案提交</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="/file/upload/">文案提交</a></li>
                         </ol>
                       </nav>
                       请选择你要上传的excel文件。
-                      <form class="" action="/upload/excel/" method="post" enctype="multipart/form-data" >
+                      <form class="" action="/file/upload/excel/" method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
                         <input type="file" name="excel_data">
                         <p></p>

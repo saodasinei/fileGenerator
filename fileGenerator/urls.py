@@ -30,6 +30,7 @@ urlpatterns = [
 
     # 路由分发
     path('', include("Generator.urls")),
+    path('file/', include("File.urls")),
     path("test/", include("TestModel.urls")),
 
 ]

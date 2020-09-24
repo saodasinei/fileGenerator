@@ -55,7 +55,7 @@ $(document).ready(function(){
 //          console.log(number);
         $.ajax({
            method:"POSt",
-           url:'/upload/save/',
+           url:'/file/upload/save/',
            port:8000,
            dataTYpe:'json',
            data:JSON.stringify(data),
@@ -74,19 +74,38 @@ $(document).ready(function(){
 
           $.ajax({
           method:"GET",
-          url:'/upload/content/',
-          dataTYpe:'json',
+          url:'/file/upload/content/',
+          dataType:'json',
           data:{"id":upload_id},
           success:function(res){
-              console.log("查询成功！");
-              console.log(res[0]);
+              console.log(res);
+              $("#tbody").empty();
+              for(var i=0; i<res.length; i++){
+              $("#tbody").append(
+                   "<tr>"
+                   +"<th scope='row'>"
+                   +res[i].id
+                   +"</th>"
+                   +"<td>"
+                   +res[i].template_id_id
+                   +"</td>"
+                   +"<td>"
+                   +res[i].content
+                   +"</td>"
+                   +"<td>"
+                   +res[i].status
+                   +"</td>"
+                   +"<td><a class='btn btn-primary' href=''>编辑</a></td>"
+                   +"</tr>"
+                 )
+
+              }
+
           }
 
           });
 
     });
-
-
 
 
 });

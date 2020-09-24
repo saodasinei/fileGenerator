@@ -16,8 +16,8 @@
                 <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
                 <h6 id="user_name">兼职小萌</h6>
                 <ul id="side_list" class="">
-                  <li id="file_upload" class=""><a href="/upload/"> <img class="side_img" src="{% static 'image/file_upload.png'%}" alt="">文案提交</a></li>
-                  <li id="file_history" class="listactive"><a href="/upload/history/"><img class="side_img" src="{% static 'image/file_history.png'%}" alt=""> 提交历史</a></li>
+                  <li id="file_upload" class=""><a href="/file/upload/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案提交</a></li>
+                  <li id="file_history" class="listactive"><a href="/file/upload/history/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">提交历史</a></li>
                 </ul>
             </div>
       
@@ -36,7 +36,36 @@
              <div id="content" class="col">
                   <!-- upload -->
                   <div id="file_upload">
-                   
+                      <a class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" href="#">删除</a>
+                      <!-- Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">删除</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                确定要删除该条上传记录吗？
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary">确定</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+
+
+
+
+
                       <div class="profile">
                         <h4>人设</h4>
                         <h6>编号:<span class="badge badge-secondary">{{profile.number}}</span></h6>
@@ -64,15 +93,8 @@
                                   <th scope="col">操作</th>
                               </tr>
                             </thead>
-                            <tbody>
-                                {% for file in files %}
-                              <tr>
-                                <th scope="row">{{file.id}}</th>
-                                <td>{{file.file}}</td>
-                                <td>{{file.newfile}}</td>
-                                <td><a class="btn btn-primary" href="">编辑</a></td>
-                              </tr>
-                                {% endfor %}
+                            <tbody id="tbody">
+
                             </tbody>
                           </table>
                       </div>

@@ -50,6 +50,7 @@ class UploadList(models.Model):
     parttimer_id = models.ForeignKey(PartTimer, on_delete=models.CASCADE, verbose_name="兼职ID")
     profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="人设")
     createdate = models.DateTimeField(u'上传时间', auto_now_add=True)
+    status = models.BooleanField(u'状态', choices=((0, '未审核'), (1, '已审核')), null=True)
 
     # def __str__(self):
     #     return self.createdate

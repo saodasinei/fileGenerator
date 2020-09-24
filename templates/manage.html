@@ -12,37 +12,35 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div id="sidebar" class="col">
+            <div id="sidebar" class="col-1">
                 <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
-                <h6 id="user_name">兼职小萌</h6>
+                <h6 id="user_name">超级管理员</h6>
                 <ul id="side_list" class="">
-                  <li id="file-upload" class="listactive"><a href="/file/upload/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案提交</a></li>
-                  <li id="file-history" class=""><a href="/file/upload/history/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">提交历史</li>
+                  <li id="file_upload" class="listactive"><a href="/manage/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案审查</a></li>
+                  <li id="file_history" class=""><a href="/manage/parttimer/"><img class="side_img" src="{% static 'image/parttimer.png'%}" alt="">兼职管理</a></li>
+                    <li id="file_history" class=""><a href="/manage/file/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">文案管理</a></li>
                 </ul>
             </div>
 
-            <div id="content" class="col-11">
-                  <!-- checking -->
-                   <div id="file_checking">
-                      <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="/upload/">文案提交</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">查重</li>
-                        </ol>
-                      </nav>
+           <div id="upload_list" class="col-2">
 
-                      <div class="row">
-                         <div class="col">
-                             <h4>重复率:</h4> <h6><span class="badge badge-secondary">30%</span></h6>
-                         </div>
-                         <div class="col">
-                             <a id="saveupload" class="btn btn-primary" href="#">保存</a>
-                         </div>
-                      </div>
+              <input type="search" class="form-control ds-input" placeholder="搜索"/>
+
+               {% for item in uploadlist %}
+               <div id="{{item.id}}" class="upload_list_item">
+                   {{item.createdate}}/
+                   <span class="badge badge-secondary">{{item.profile_id}}</span>
+               </div>
+               {% endfor %}
+            </div>
+
+             <div id="content" class="col">
+                  <!-- upload -->
+                  <div id="file_upload">
 
                       <div class="profile">
                         <h4>人设</h4>
-                        <h6>编号:<span id="number" class="badge badge-secondary">{{profile.number}}</span></h6>
+                        <h6>编号:<span class="badge badge-secondary">{{profile.number}}</span></h6>
                         <h6>系列:<span class="badge badge-secondary">{{profile.series}}</span></h6>
                         <h6>自称:<span class="badge badge-secondary">{{profile.self}}</span></h6>
                         <h6>粉丝:<span class="badge badge-secondary">{{profile.fans}}</span></h6>
@@ -60,36 +58,23 @@
                         <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">文案模版</th>
-                                <th scope="col">新文案</th>
-                                <th scope="col">操作</th>
+                                  <th scope="col">#</th>
+                                  <th scope="col">文案模版</th>
+                                  <th scope="col">新文案</th>
+                                  <th scope="col">状态</th>
+                                  <th scope="col">操作</th>
                               </tr>
                             </thead>
-                            <tbody>
-                                {% for file in files %}
-                              <tr>
-                                <th class="file_id" scope="row">{{file.id}}</th>
-                                <td>{{file.file}}</td>
-                                <td class="new_file">{{file.newfile}}</td>
-                                <td><a class="btn btn-primary" href="">编辑</a></td>
-                              </tr>
-                                {% endfor %}
+                            <tbody id="tbody">
+
                             </tbody>
                           </table>
                       </div>
-                     <!-- checking -->
                    </div>
-                  <!-- content -->
-              </div>
-             <!-- row -->
-           </div>
-        <!--        container-->
+             </div>
+        </div>
+        <!--container-->
     </div>
-
-
-
-
 
 
 
