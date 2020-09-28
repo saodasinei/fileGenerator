@@ -1,0 +1,206 @@
+{\rtf1\ansi\ansicpg936\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset134 PingFangSC-Semibold;}
+{\colortbl;\red255\green255\blue255;\red7\green64\blue153;\red109\green109\blue109;\red118\green0\blue2;
+\red152\green0\blue15;\red152\green66\blue3;\red107\green0\blue1;\red0\green0\blue0;\red250\green250\blue250;
+\red83\green85\blue2;\red115\green0\blue2;\red255\green255\blue255;\red38\green38\blue38;}
+{\*\expandedcolortbl;;\cssrgb\c0\c33333\c66667;\cssrgb\c50196\c50196\c50196;\cssrgb\c54510\c0\c0;
+\cssrgb\c66667\c6667\c6667;\cssrgb\c66667\c33333\c0;\cssrgb\c50196\c0\c0;\cssrgb\c0\c0\c0;\cssrgb\c98431\c98431\c98431;
+\cssrgb\c40000\c40000\c0;\cssrgb\c53333\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c20000\c20000\c20000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Python + Django 
+\f1 \'bf\'f2\'bc\'dc\'c1\'f7\'b3\'cc\
+
+\f0 \
+
+\f1 \'bb\'b7\'be\'b3\'b4\'ee\'bd\'a8\'ba\'cd\'cf\'ee\'c4\'bf\'b4\'b4\'bd\'a8
+\f0 \
+1. 
+\f1 \'d4\'da
+\f0 pycharm
+\f1 \'d6\'d0\'d0\'c2\'bd\'a8\'cf\'ee\'c4\'bf\'ce\'c4\'bc\'fe\'bc\'d0\
+2. \'c5\'e4\'d6\'c3\'d0\'e9\'c4\'e2\'bb\'b7\'be\'b3-python interpreter, \
+   \'b0\'b2\'d7\'b0django\'bf\'f2\
+   mysql\'b2\'d9--pymysql\
+3. \'d0\'c2\'bd\'a8Django\'cf\'ee\'c4\'bf\'ce\'c4\'bc\'fe\'a3\'ac  django-amdin.py startproject HelloWorld\
+\
+\
+\'c4\'a3\'b0\'e6\'c5\'e4\'d6\'c3\
+1. manage.py \'cd\'ac\'bc\'b6\'c4\'bf\'c2\'bc\'bd\'a8\'c1\'a2template\'ce\'c4\'bc\'fe\'bc\'d0\
+2. settings.py \'d6\'d0\'d0\'de\'b8\'c4TEMPLATES\'d6\'d0 DIRS\'a3\'ba[str(BASE_DIR)+\'a1\'b1/template\'a1\'b1,],\
+3. \
+\
+\
+\
+\'be\'b2\'cc\'ac\'d7\'ca\'d4\'b4\
+\
+\
+\
+\
+\'c2\'b7\'d3\'c9\'b7\'d6\'b7\'a2\
+\
+\
+\
+\
+\'ca\'fd\'be\'dd\'bf\'e2\
+sudo pip3 install pymysql\
+-\'ca\'fd\'be\'dd\'bf\'e2\'c5\'e4\'d6\'c3\
+1. create database \'ca\'fd\'be\'dd\'bf\'e2\'c3\'fb\'b3\'c6 default charset=utf8;\
+2. \'d4\'da\'cf\'ee\'c4\'bfsetting.py \'d6\'d0\'d5\'d2\'b5\'bdDATABASES\'c5\'e4\'d6\'c3\'cf\'ee\'a3\'ac\'c7\'e2\'c6\'f8\'d0\'c5\'cf\'a2\'d0\'de\'b8\'c4\'ce\'aa\'a3\'ba\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26\fsmilli13200 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 DATABASES\cf3 \strokec3  = \{ \
+    \cf4 \strokec4 '\cf5 \strokec5 default\cf4 \strokec4 '\cf3 \strokec3 : \
+    \{ \
+        \cf4 \strokec4 '\cf5 \strokec5 ENGINE\cf4 \strokec4 '\cf3 \strokec3 : \cf4 \strokec4 '\cf5 \strokec5 django.db.backends.mysql\cf4 \strokec4 '\cf3 \strokec3 ,    \cf6 \strokec6 # 
+\f1 \'ca\'fd\'be\'dd\'bf\'e2\'d2\'fd\'c7\'e6
+\f2 \cf3 \strokec3 \
+        \cf4 \strokec4 '\cf5 \strokec5 NAME\cf4 \strokec4 '\cf3 \strokec3 : \cf4 \strokec4 '\cf5 \strokec5 runoob\cf4 \strokec4 '\cf3 \strokec3 , \cf6 \strokec6 # 
+\f1 \'ca\'fd\'be\'dd\'bf\'e2\'c3\'fb\'b3\'c6
+\f2 \cf3 \strokec3 \
+        \cf4 \strokec4 '\cf5 \strokec5 HOST\cf4 \strokec4 '\cf3 \strokec3 : \cf4 \strokec4 '\cf5 \strokec5 127.0.0.1\cf4 \strokec4 '\cf3 \strokec3 , \cf6 \strokec6 # 
+\f1 \'ca\'fd\'be\'dd\'bf\'e2\'b5\'d8\'d6\'b7\'a3\'ac\'b1\'be\'bb\'fa
+\f2  ip 
+\f1 \'b5\'d8\'d6\'b7
+\f2  127.0.0.1 \cf3 \strokec3 \
+        \cf4 \strokec4 '\cf5 \strokec5 PORT\cf4 \strokec4 '\cf3 \strokec3 : \cf7 \strokec7 3306\cf3 \strokec3 , \cf6 \strokec6 # 
+\f1 \'b6\'cb\'bf\'da
+\f2  \cf3 \strokec3 \
+        \cf4 \strokec4 '\cf5 \strokec5 USER\cf4 \strokec4 '\cf3 \strokec3 : \cf4 \strokec4 '\cf5 \strokec5 root\cf4 \strokec4 '\cf3 \strokec3 ,  \cf6 \strokec6 # 
+\f1 \'ca\'fd\'be\'dd\'bf\'e2\'d3\'c3\'bb\'a7\'c3\'fb
+\f2 \cf3 \strokec3 \
+        \cf4 \strokec4 '\cf5 \strokec5 PASSWORD\cf4 \strokec4 '\cf3 \strokec3 : \cf4 \strokec4 '\cf5 \strokec5 123456\cf4 \strokec4 '\cf3 \strokec3 , \cf6 \strokec6 # 
+\f1 \'ca\'fd\'be\'dd\'bf\'e2\'c3\'dc\'c2\'eb
+\f2 \cf3 \strokec3 \
+    \}  \
+\}\
+3. 
+\f1 \'d4\'da
+\f2 settings.py 
+\f1 \'cd\'ac\'bc\'b6\'c4\'bf\'c2\'bc\'cf\'c2\'b5\'c4
+\f2 __init__.py
+\f1 \'d6\'d0\'d2\'fd\'c8\'eb\'c4\'a3\'bf\'e9\'ba\'cd\'bd\'f8\'d0\'d0\'c5\'e4\'d6\'c3
+\f2 \
+import pymysql\
+Pymysql.install_as_MySQLdb()\
+
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+-\'b6\'a8\'d2\'e5\'c4\'a3\'d0\'cd\
+\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6APP\
+django-admin.py startup TestModel\
+-\'bd\'a8\'c1\'a2\'c4\'a3\'d0\'cd\
+-\'cc\'ed\'bc\'d3\'d0\'c2APP\'b5\'bdsetting.py\
+\
+-\'d4\'da\'c3\'fc\'c1\'ee\'d0\'d0\'d6\'b4\'d0\'d0\
+Python3 manage.py migrate    #\'b4\'b4\'bd\'a8\'b1\'ed\'bd\'e1\'b9\'b9\
+Python3 manage.py makemigrations TestModel #\'c8\'c3Django \'d6\'aa\'b5\'c0\'ce\'d2\'c3\'c7\'b5\'c4\'c4\'a3\'d0\'cd\'d3\'d0\'d2\'bb\'d0\'a9\'b1\'e4\'b8\'fc\
+Python3 manage.py migrate\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'c4\'a3\'d0\'cd\'b2\'d9\'d7\'f7\'ca\'fd\'be\'dd\'bf\'e2\
+\
+#\'bb\'f1\'c8\'a1\'cb\'f9\'d3\'d0\'ca\'fd\'be\'dd\
+List = Test.objects.all()\
+#filter\'cf\'e0\'b5\'b1\'d3\'daSQL\'d6\'d0\'b5\'c4Wher\
+\
+\'ca\'fd\'be\'dd\'bf\'e2\'b3\'a3\'d3\'c3\'b2\'d9\'d7\'f7\
+\
+\
+\
+\'d7\'a2\'b2\'e1\'d0\'c2\'d3\'c3\'bb\'a7\
+Python manage.py createsuperuser\
+\
+\
+\
+\
+ajax\
+1. csrf\
+2. Json \'ca\'fd\'be\'dd\'c0\'e0\'d0\'cd\'d7\'aa\'bb\'bb\
+\
+\
+\
+
+\f3\b Git \'b2\'d9\'d7\'f7
+\f1\b0 \
+-\'b4\'b4\'bd\'a8\'ca\'fd\'be\'dd\'b2\'d6\'bf\'e2\
+\'ca\'fd\'be\'dd\'b2\'d6\'bf\'e2\'b3\'f5\'ca\'bc\'bb\'af\
+git init\
+-\'ca\'b9\'d3\'c3\'d6\'b8\'b6\'a8\'c4\'bf\'c2\'bc\
+git init newrepo\
+-\'cc\'ed\'bc\'d3\'ce\'c4\'bc\'fe\'b5\'bd\'c4\'bf\'c2\'bc\
+Git add *.c\
+Git add README\
+Git commit -m \'a1\'ae\'b3\'f5\'ca\'bc\'bb\'af\'cf\'ee\'c4\'bf\'b0\'e6\'b1\'be\'a1\'af\
+-\'bf\'cb\'c2\'a1\'cf\'ee\'c4\'bf\
+Git clone <repo>\
+Git clone <repo> <directory>\
+-\'bc\'b8\'d6\'d6\'b5\'c8\'bc\'db\'b5\'c4git clone\'d0\'b4\'b7\'a8\
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f2 \cf8 \cb9 \expnd0\expndtw0\kerning0
+git clone http\cf10 :\cf11 //github.com/CosmosHua/locate new\cf8 \
+git clone http\cf10 :\cf11 //github.com/CosmosHua/locate.git new\cf8 \
+git clone git\cf10 :\cf11 //github.com/CosmosHua/locate new\cf8 \
+git clone git\cf10 :\cf11 //github.com/CosmosHua/locate.git new\
+\
+\cf8 \cb12 -
+\f1 \'d2\'bb\'b8\'f6\'bc\'f2\'b5\'a5\'b5\'c4\'b2\'d9\'d7\'f7\'b2\'bd\'d6\'e8\cf11 \cb9 \
+\cf13 git init\
+git add .\
+Git commit
+\f2 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \cb1 \kerning1\expnd0\expndtw0 \'cc\'e1\'bd\'bb\'d3\'eb\'d0\'de\'b8\'c4\
+git add     \'cc\'ed\'bc\'d3\'ce\'c4\'bc\'fe\'b5\'bd\'b2\'d6\'bf\'e2\
+git status  \'b2\'e9\'bf\'b4\'b2\'d6\'bf\'e2\'b5\'b1\'c7\'b0\'b5\'c4\'d7\'b4\'cc\'ac\'a3\'ac\'cf\'d4\'ca\'be\'d3\'d0\'b1\'e4\'b8\'fc\'b5\'c4\'ce\'c4\'bc\'fe\
+git diff      \'b1\'c8\'bd\'cf\'ce\'c4\'bc\'fe\'b5\'c4\'b2\'bb\'cd\'ac\'a3\'ac\'bc\'b4\'d4\'dd\'b4\'e6\'c7\'f8\'ba\'cd\'b9\'a4\'d7\'f7\'c7\'f8\'b5\'c4\'b2\'ee\'d2\'ec\
+git commit \'cc\'e1\'bd\'bb\'d4\'dd\'b4\'e6\'c7\'f8\'bb\'d8\'b5\'bd\'b1\'be\'b5\'d8\'b2\'d6\'bf\'e2\
+git reset    \'bb\'d8\'cd\'cb\'b0\'e6\'b1\'be\
+git  rm      \'c9\'be\'b3\'fd\'b9\'a4\'d7\'f7\'c7\'f8\'ce\'c4\'bc\'fe\
+git mv       \'c9\'be\'b3\'fd\'b9\'a4\'d7\'f7\'c7\'f8\'ce\'c4\'bc\'fe\
+\'cc\'e1\'bd\'bb\'c8\'d5\'d6\'be\
+git log       \'b2\'e9\'bf\'b4\'c0\'fa\'ca\'b7\'cc\'e1\'bd\'bb\'bc\'c7\'c2\'bc\
+git blame <file> \'d2\'d4\'c1\'d0\'b1\'ed\'d0\'ce\'ca\'bd\'b2\'e9\'bf\'b4\'d6\'b8\'b6\'a8\'ce\'c4\'bc\'fe\'b5\'c4\'c0\'fa\'ca\'b7\'d0\'de\'b8\'c4\'bc\'c7\'c2\'bc\
+\'d4\'b6\'b3\'cc\'b2\'d9\'d7\'f7\
+git remote  \'d4\'b6\'b3\'cc\'b2\'d6\'bf\'e2\'b2\'d9\'d7\'f7\
+git fetch     \'b4\'d3\'d4\'b6\'b3\'cc\'b2\'d6\'bf\'e2\'c8\'a1\'b4\'fa\'c2\'eb\'bf\'e2\
+git pull       \'cf\'c2\'d4\'d8\'d4\'b6\'b3\'cc\'b4\'fa\'c2\'eb\'b2\'a2\'ba\'cf\'b2\'a2\
+git push     \'c9\'cf\'b4\'ab\'d4\'b6\'b3\'cc\'b4\'fa\'c2\'eb\'b2\'a2\'ba\'cf\'b2\'a2\
+\
+Git \'b7\'d6\'d6\'a7\'b9\'dc\'c0\'ed\
+Git branch (branchname)     \'b4\'b4\'bd\'a8\'b7\'d6\'d6\'a7 \
+Git checkout (branchname\'a3\'a9\'c7\'d0\'bb\'bb\'b7\'d6\'d6\'a7\
+Git merge                          \'ba\'cf\'b2\'a2\'b7\'d6\'d6\'a7\
+-\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'b7\'d6\'d6\'a7\
+git branch \'b2\'e9\'bf\'b4\'b7\'d6\'d6\'a7\
+git branch test \'d0\'c2\'bd\'a8\'b7\'d6\'d6\'a7\
+git push origin dev \'bd\'ab\'b1\'be\'b5\'d8\'b5\'c4\'d0\'de\'b8\'c4\'cd\'c6\'cb\'cd\'b5\'bd\'d4\'b6\'b3\'cc\'b7\'fe\'ce\'f1\'c6\'f7\
+\
+\
+\'cc\'ed\'bc\'d3\'d4\'b6\'b3\'cc\'bf\'e2\
+Git remote add [shortname] [url]\
+\'c9\'fa\'b3\'c9ssh key\
+Ssh-keygen -t rsa -C \'a1\'b0youremail@example.com\'a1\'b1\
+\
+\'cc\'e1\'bd\'bb\'b5\'bd Github\
+git remote add origin git @github.com:tianqixin/runoob-git-text.git\
+git push -u origin master\
+\
+\'cc\'e1\'c8\'a1\'d4\'b6\'b3\'cc\'b2\'d6\'bf\'e2\
+git fetch origin\
+git merge origin/master\
+\'cd\'c6\'cb\'cd\'b5\'bd\'d4\'b6\'b3\'cc\'b2\'d6\'bf\'e2\
+git push [alias] [branch]\
+\
+\'c9\'be\'b3\'fd\'d4\'b6\'b3\'cc\'b2\'d6\'bf\'e2\
+git remote rm [\'b1\'f0\'c3\'fb]\
+\
+\
+\
+\
+\
+\
+}

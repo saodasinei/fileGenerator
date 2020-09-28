@@ -39,6 +39,16 @@
 .listactive{
    background-color:#487FFE;
 }
+#logout{
+   position:absolute;
+   color:#ffffff;
+   margin-left:50px;
+   bottom:30px;
+}
+#logout_logo{
+    width:15px;
+    height:15px;
+}
 
 /* 右侧内容 */
 /* 显示/隐藏 */

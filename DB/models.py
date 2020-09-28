@@ -35,8 +35,8 @@ class Profile(models.Model):
 
 
 class PartTimer(models.Model):
-    account = models.CharField(u'用户名', max_length=30)
-    passowrd = models.CharField(u'密码', max_length=20)
+    username = models.CharField(u'用户名', max_length=30)
+    password = models.CharField(u'密码', max_length=20)
     name = models.CharField(u'名称', max_length=20)
 
     def __str__(self):

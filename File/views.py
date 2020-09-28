@@ -1,24 +1,68 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.views.decorators import csrf
 from DB import models
-from django.core import serializers
 import pandas as pd
 import json
 import datetime
 
 
 # Create your views here.
-def login(request):
-    return render(request, 'login.html')
+# login
+# def index(request):
+#     if request.user.is_authenticated:
+#         return HttpResponse('您已登陆')
+#     else:
+#         return render(request, 'upload.html')
+
+def checklog(func):
+    def checkuser(request, *args, **kwargs):
+        username = request.session.get('username')
+        if username:
+            return func(request, *args, **kwargs)
+        else:
+            return redirect('/file/')
+    return checkuser
+
+@checklog
+def index(request):
+    username = request.session.get('username')
+    return render(request, 'upload.html', {'username': username})
 
 
-def identify(request):
-    print(request.body)
-    return HttpResponse("200")
+# 登陆
+def loginAction(request):
+    username = request.POST['username']
+    password = request.POST['password']
+
+    user = models.PartTimer.objects.filter(username=username, password=password)
+    if user:
+        request.session['username'] = username
+        return render(request, 'upload.html')
+    else:
+        return HttpResponse("你输入的账号密码有误！")
+    # result = models.PartTimer.objects.filter(username=username, password=password).count()
+    #
+    # if result == 1:
+    #     request.session['username'] = username
+    #     return render(request, 'upload.html')
+    # else:
+    #     return HttpResponse("你输入的账号或密码有误!")
 
 
+# 注销
+def logoutAction(request):
+    logout(request)
+    return redirect("/file/")
+
+
+# fileupload
 def upload(request):
+    username = request.session.get('username', '')
+    if not username:
+        return redirect('/file/')
     return render(request, 'upload.html')
 
 
@@ -83,6 +127,7 @@ def saveupload(request):
     return HttpResponse("200")
 
 
+# uploadHistory
 def history(request):
     uploadlist = models.UploadList.objects.all()
 
@@ -105,6 +150,14 @@ def content(request):
 
 def manage(request):
     return render(request, 'manage.html')
+
+
+def manage_review(request):
+    return render(request, 'manage_review.html')
+
+
+def manage_parttimer(request):
+    return render(request, 'manage_parttimer.html')
 
 
 def search(request):

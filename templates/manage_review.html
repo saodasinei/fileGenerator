@@ -14,16 +14,15 @@
         <div class="row">
             <div id="sidebar" class="col-1">
                 <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
-                <h6 id="user_name">{{request.session.username}}</h6>
+                <h6 id="user_name">超级管理员</h6>
                 <ul id="side_list" class="">
-                  <li id="file_upload" class=""><a href="/file/upload/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案提交</a></li>
-                  <li id="file_history" class="listactive"><a href="/file/upload/history/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">提交历史</a></li>
+                    <li id="file_history" class=""><a href="/file/manage/"><img class="side_img" src="{% static 'image/manage.png'%}" alt="">文案管理</a></li>
+                  <li id="file_upload" class="listactive"><a href="/file/manage/review"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案审查</a></li>
+                  <li id="file_history" class=""><a href="/file/manage/parttimer/"><img class="side_img" src="{% static 'image/parttimer.png'%}" alt="">兼职管理</a></li>
+
                 </ul>
-                   <a id="logout" href="/file/login/logoutAction">
-                        <img id="logout_logo" src="{% static 'image/quit.png'%}" alt="">退出
-                    </a>
             </div>
-      
+
            <div id="upload_list" class="col-2">
 
               <input type="search" class="form-control ds-input" placeholder="搜索"/>
@@ -39,35 +38,6 @@
              <div id="content" class="col">
                   <!-- upload -->
                   <div id="file_upload">
-                      <a class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" href="#">删除</a>
-                      <!-- Modal -->
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">删除</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                确定要删除该条上传记录吗？
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary">确定</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-
-
-
-
-
 
                       <div class="profile">
                         <h4>人设</h4>
