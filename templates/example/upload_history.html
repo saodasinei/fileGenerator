@@ -1,0 +1,119 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文案查重</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/generator.css'%}">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="sidebar" class="col-1">
+                <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                <h6 id="user_name">{{request.session.username}}</h6>
+                <ul id="side_list" class="">
+                  <li id="file_upload" class=""><a href="/file/upload/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案提交</a></li>
+                  <li id="file_history" class="listactive"><a href="/file/upload/history/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">提交历史</a></li>
+                </ul>
+                   <a id="logout" href="/file/login/logoutAction">
+                        <img id="logout_logo" src="{% static 'image/quit.png'%}" alt="">退出
+                    </a>
+            </div>
+      
+           <div id="upload_list" class="col-2">
+
+              <input type="search" class="form-control ds-input" placeholder="搜索"/>
+
+               {% for item in uploadlist %}
+               <div id="{{item.id}}" class="upload_list_item">
+                   {{item.createdate}}/
+                   <span class="badge badge-secondary">{{item.profile_id}}</span>
+               </div>
+               {% endfor %}
+            </div>
+
+             <div id="content" class="col">
+                  <!-- upload -->
+                  <div id="file_upload">
+                      <a class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" href="#">删除</a>
+                      <!-- Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">删除</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                确定要删除该条上传记录吗？
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary">确定</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+                      <div class="profile">
+                        <h4>人设</h4>
+                        <h6>编号:<span class="badge badge-secondary">{{profile.number}}</span></h6>
+                        <h6>系列:<span class="badge badge-secondary">{{profile.series}}</span></h6>
+                        <h6>自称:<span class="badge badge-secondary">{{profile.self}}</span></h6>
+                        <h6>粉丝:<span class="badge badge-secondary">{{profile.fans}}</span></h6>
+                        <h6>问候:<span class="badge badge-secondary">{{profile.greeting}}</span></h6>
+                        <h6>提问:<span class="badge badge-secondary">{{profile.question}}</span></h6>
+                        <h6>称赞:<span class="badge badge-secondary">{{profile.praise}}</span></h6>
+                        <h6>系列:<span class="badge badge-secondary">{{profile.tucao}}</span></h6>
+                        <h6>吐槽:<span class="badge badge-secondary">{{profile.koupi}}</span></h6>
+                        <h6>下期:<span class="badge badge-secondary">{{profile.next}}</span></h6>
+                        <h6>结束:<span class="badge badge-secondary">{{profile.end}}</span></h6>
+                      </div>
+
+                      <div class="file_content">
+                        <h4>文案</h4>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">文案模版</th>
+                                  <th scope="col">新文案</th>
+                                  <th scope="col">状态</th>
+                                  <th scope="col">操作</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tbody">
+
+                            </tbody>
+                          </table>
+                      </div>
+                   </div>
+             </div>
+        </div>
+        <!--container-->
+    </div>
+
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>

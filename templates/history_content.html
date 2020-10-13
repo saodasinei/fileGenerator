@@ -1,0 +1,87 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小懵文案管理—上传详情</title>
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css/index.css'%}">
+</head>
+<body>
+
+
+     <div class="container">
+        <div id="profile" class="row">
+            <div class="col-1">
+             <div id="home">
+                 <a href="/file/"><img id="home_icon" src="{% static 'image/home.png'%}" alt=""></a>
+              </div>
+              <div id="back">
+                  <a href="/file/upload/history/"><img id="back_icon" src="{% static 'image/back.png'%}" alt=""></a>
+              </div>
+            </div>
+              <div class="col">
+                  <div class="row">
+                      <div class="col-1">
+                         <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                      </div>
+                      <div class="col-9">
+                         <span>文案小能手</span></br>
+                         <span>兼职:{{request.session.username}}</span>
+                      </div>
+                      <div class="col-2">
+                         <a id="logout" href="/file/login/logoutAction">
+                             <img id="logout_icon" src="{% static 'image/log-out.png'%}" alt="">退出
+                         </a>
+                      </div>
+                  </div> 
+              </div>
+        </div>
+        <div id="files" class="row">
+              <div class="col-6">
+                  <h6>文案</h6>
+              </div>
+              <div class="col">
+                  <h6>状态</h6>
+              </div>
+                <div class="col">
+                    <h6>编辑</h6>
+                </div>
+                {% for item in content %}
+                <div class="row file">
+                  <div class="col-6 newfile_content">
+                        {{item.content}}
+                  </div>
+                    {% if item.status == None %}
+                  <div class="col">
+                        未知
+                  </div>
+                    {% elif item.status == True %}
+                  <div style="color:green;" class="col">
+                        通过
+                   </div>
+                    {% elif item.status == False %}
+                   <div style="color:red;" class="col">
+                        未通过
+                   </div>
+                    {% endif %}
+                    <div class="col">
+                        <a class="btn btn-sm c_edit" href="#"><img src="{% static 'image/edit.png'%}" alt=""></a>
+                    </div>
+                </div>
+              {% endfor%}
+        </div>
+     </div>
+
+
+
+
+
+       <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+       <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+       <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.login_title{
+  margin-top:80px;
+}
+.login_form{
+    width:600px;
+    height:400px;
+    margin-top:80px;
+    padding:80px;
+    background-color:#F7F7F7;
+}
+#file_logo{
+    width:30px;
+    height:30px;
+    margin-right:20px;
+}
+#title{
+    color:#4076D5;
+}
+#login_button{
+    margin-left:43%;
+    margin-top:10px;
+    width:100px;
+    background-color:#4076D5;
+}

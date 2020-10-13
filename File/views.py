@@ -10,26 +10,33 @@ import datetime
 
 
 # Create your views here.
-# login
-# def index(request):
-#     if request.user.is_authenticated:
-#         return HttpResponse('您已登陆')
-#     else:
-#         return render(request, 'upload.html')
-
-def checklog(func):
-    def checkuser(request, *args, **kwargs):
-        username = request.session.get('username')
-        if username:
-            return func(request, *args, **kwargs)
+def loginValid(fun):
+    def inner(request, *args, **kwargs):
+        session = request.session.get('username')
+        if session:
+            user = models.PartTimer.objects.filter(username=session).first()
+            if user:
+                return fun(request, *args, **kwargs)
+            else:
+                return redirect('/file/login/')
         else:
-            return redirect('/file/')
-    return checkuser
+            return redirect('/file/login/')
+    return inner
 
-@checklog
+# login
+@loginValid
 def index(request):
-    username = request.session.get('username')
-    return render(request, 'upload.html', {'username': username})
+    return render(request, 'index.html')
+
+# def index(request):
+#     username = request.session.get('username', '')
+#     if not username:
+#         return redirect('/file/login/')
+#     return render(request, 'index.html')
+
+
+def login(request):
+    return render(request, 'login.html')
 
 
 # 登陆
@@ -39,10 +46,12 @@ def loginAction(request):
 
     user = models.PartTimer.objects.filter(username=username, password=password)
     if user:
+        id = list(user.values_list('id', flat=True))[0]
         request.session['username'] = username
-        return render(request, 'upload.html')
+        request.session['userid'] = id
+        return render(request, 'index.html')
     else:
-        return HttpResponse("你输入的账号密码有误！")
+        return HttpResponse("你输入的账号或密码有误！")
     # result = models.PartTimer.objects.filter(username=username, password=password).count()
     #
     # if result == 1:
@@ -59,10 +68,8 @@ def logoutAction(request):
 
 
 # fileupload
+@loginValid
 def upload(request):
-    username = request.session.get('username', '')
-    if not username:
-        return redirect('/file/')
     return render(request, 'upload.html')
 
 
@@ -95,24 +102,25 @@ def uploadexcel(request):
     # print(files)
     # print(newfiles)
     # return HttpResponse("200")
-    return render(request, 'upload_checking.html', {"profile": profile, "files": file_list})
+    return render(request, 'upload_text.html', {"profile": profile, "files": file_list})
 
 
+@loginValid
 def saveupload(request):
     if request.method == "POST":
         data_post = request.body.decode("utf8")
         data = json.loads(data_post)
-        profile_mumber = data[0]
+        profile_number = data[0]
         files = data[1:]
 
-        print(profile_mumber)
+        print(profile_number)
         print(files)
 
         time = datetime.datetime.now()
         now = time + datetime.timedelta(hours=8)
         print(now)
         d1 = models.PartTimer.objects.get(id=1)
-        d2 = models.Profile.objects.get(number=profile_mumber)
+        d2 = models.Profile.objects.get(number=profile_number)
         uploadlist = models.UploadList(parttimer_id=d1, profile_id=d2, createdate=now)
         uploadlist.save()
 
@@ -128,24 +136,40 @@ def saveupload(request):
 
 
 # uploadHistory
-def history(request):
-    uploadlist = models.UploadList.objects.all()
 
+@loginValid
+def history(request):
+    id = request.session.get('userid')
+    uploadlist = models.UploadList.objects.filter(parttimer_id=id)
     return render(request, 'upload_history.html', {"uploadlist": uploadlist})
 
 
+@loginValid
 def content(request):
     if request.method == 'GET':
         id = request.GET.get("id")
+        content = models.UploadFile.objects.filter(upload_id=id)
+    return render(request, 'history_content.html', {"content": content})
+
+
+# def content(request):
+#     if request.method == 'GET':
+#         id = request.GET.get("id")
+#         print(id)
+#         content = models.UploadFile.objects.filter(upload_id=id).values()
+#         data = list(content)
+#         print(data)
+#     return HttpResponse(json.dumps(data))
+
+
+@loginValid
+def delete(request):
+    if request.method == 'GET':
+        id = request.GET.get("id")
         print(id)
-        content = models.UploadFile.objects.filter(upload_id=id).values()
-        data = list(content)
-        print(data)
-        # data = serializers.serialize('json', content)
-        # data = json.dumps(data)
-        # print(data)
-        # print(request.body)
-    return HttpResponse(json.dumps(data))
+        models.UploadFile.objects.filter(upload_id=id).delete()
+        models.UploadList.objects.filter(id=id).delete()
+    return HttpResponse(200)
 
 
 def manage(request):

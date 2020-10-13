@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 
    
-
+    // 保存上传
     $("#saveupload").click(function(){
 
           number = $('#number').text();
@@ -79,7 +79,8 @@ $(document).ready(function(){
 
         });
     });
-
+    
+    // 产看上传列表的内容
     $(".upload_list_item").click(function(){
           upload_id = $(this).attr("id");
           console.log(upload_id);

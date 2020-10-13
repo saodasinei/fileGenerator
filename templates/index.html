@@ -1,0 +1,65 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小懵文案管理</title>
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css/index.css'%}">
+</head>
+<body>
+
+
+     <div class="container">
+         <div id="profile" class="row">
+                 <div class="col-1">
+                    <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                 </div>
+                 <div class="col-9">
+                    <span>文案小能手</span></br>
+                    <span>兼职:{{request.session.username}}</span>
+                 </div>
+                 <div class="col-2">
+                    <a id="logout" href="/file/login/logoutAction">
+                        <img id="logout_icon" src="{% static 'image/log-out.png'%}" alt="">退出
+                    </a>
+                 </div>
+         </div>
+         <div id="service" class="row">
+                 <div class="col">
+                    <div id="file_upload"><img class="upload_logo" src="{% static 'image/upload_logo.png'%}" alt=""><span id="upload_span">提交文案</span></div>
+                 </div>
+                 <div class="col">
+                    <div id="upload_history"><img class="upload_logo" src="{% static 'image/history_logo.png'%}" alt=""><span id="history_span">提交历史</span></div>
+                 </div>
+                 
+         </div>
+
+     </div>
+
+
+
+
+
+
+
+       
+       <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+       <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+       <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script>
+        $(document).ready(function(){
+            $("#file_upload").click(function(){
+                window.location.href="/file/upload/"
+            });
+        });
+        $(document).ready(function(){
+            $("#upload_history").click(function(){
+                window.location.href="/file/upload/history/"
+            });
+        });
+    </script>
+</body>
+</html>

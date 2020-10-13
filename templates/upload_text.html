@@ -1,0 +1,187 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小懵文案管理—查重</title>
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css/index.css'%}">
+</head>
+<body>
+
+   
+     <div class="container">
+         <div id="profile" class="row">
+               <div class="col-1">
+                <div id="home">
+                    <a href="/file/"><img id="home_icon" src="{% static 'image/home.png'%}" alt=""></a>
+                 </div>
+                 <div id="back">
+                     <a href="/file/upload/"><img id="back_icon" src="{% static 'image/back.png'%}" alt=""></a>
+                 </div>
+               </div>
+                 <div class="col">
+                     <div class="row">
+                         <div class="col-1">
+                            <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                         </div>
+                         <div class="col-9">
+                            <span>文案小能手</span></br>
+                            <span>兼职:{{request.session.username}}</span>
+                         </div>
+                         <div class="col-2">
+                            <a id="logout" href="/file/login/logoutAction">
+                                <img id="logout_icon" src="{% static 'image/log-out.png'%}" alt="">退出
+                            </a>
+                         </div>
+                     </div> 
+                 </div>
+         </div>
+         <h6 class="checking_title">查重结果</h6>
+         <div id="checking" class="row">    
+             <div class="col">
+                 <div class="checking_content">
+                    <h5>17.3%</h5>
+                    <span class="checking_span">
+                        总文字重复比
+                    </span>  
+                   
+                 </div>
+                  
+             </div>
+             <div class="col">
+                 <div class="checking_content">
+                    <h5>342</h5>
+                    <span class="checking_span">
+                        总字数
+                    </span>  
+                 </div>
+            </div>
+            <div class="col">
+                <div class="checking_content">
+                    <h5>1234</h5>
+                    <span class="checking_span">
+                        重复字数
+                    </span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="checking_content">
+                    <h5>12</h5>
+                    <span class="checking_span">
+                        连续最大重复字数
+                    </span>
+                </div>
+            </div>
+                 
+         </div>
+         <h6 class="checking_title">人设模版</h6>
+         <div id="profile_template" class="row">
+            <div class="content profile_content">
+                <span class="profile_span">
+                    编号
+                </span>
+                <h6 id="number">{{profile.number}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    系列
+                </span>
+                <h6>{{profile.series}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    自我称呼
+                </span>
+                <h6>{{profile.self}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    粉丝称呼
+                </span>
+                <h6>{{profile.fans}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    问候
+                </span>
+                <h6>{{profile.greeting}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    提问
+                </span>
+                <h6>{{profile.question}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    称赞
+                </span>
+                <h6>{{profile.praise}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    口癖
+                </span>
+                <h6>{{profile.koupi}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    吐槽
+                </span>
+                <h6>{{profile.tucao}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    下期
+                </span>
+                <h6>{{profile.next}}</h6>
+            </div>
+            <div class="profile_content">
+                <span class="profile_span">
+                    结束
+                </span>
+                <h6>{{profile.end}}</h6>
+            </div>          
+        </div>
+        
+        <div id="file_text" class="row">
+                <div class="col-6">
+                    <h6 class="checking_title">文案模版</h6>
+                </div>
+                <div class="col">
+                    <h6 class="checking_title">新文案</h6>
+                </div>
+            <div class="row">
+                {% for file in files%}
+                <div class="col-6">
+                    <div class="file_id">{{file.id}}</div>
+                    <div class="file_content">
+                        {{file.file}}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>{{file.id}}</div>
+                    <div class="file_content new_file">
+                        {{file.newfile}}
+                        <a class="btn edit" href=""><img src="{% static 'image/edit.png'%}" alt=""></a>
+                    </div>
+                </div>
+               {% endfor %}
+               <a id="saveupload" class="btn btn-primary" href="#">保存</a>
+            </div> 
+        </div>
+     </div>
+
+
+
+
+       
+       <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+       <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+       <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

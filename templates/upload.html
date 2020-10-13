@@ -3,60 +3,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>上传文案</title>
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/generator.css'%}">
-    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <title>小懵文案管理—登陆</title>
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css/index.css'%}">
 </head>
 <body>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div id="sidebar" class="col">
-                <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
-                <h6 id="user_name">{{request.session.username}}</h6>
-                <ul id="side_list" class="">
-                    <li id="file_upload" class="listactive"><a href="/file/upload/"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案提交</a></li>
-                    <li id="file_history" class=""><a href="/file/upload/history/"><img class="side_img" src="{% static 'image/history.png'%}" alt="">提交历史</li>
-                </ul>
-                    <a id="logout" href="/file/login/logoutAction">
-                        <img id="logout_logo" src="{% static 'image/quit.png'%}" alt="">退出
-                    </a>
-            </div>
-    
-             <div id="content" class="col-11">
-               
+
+     <div class="container">
+         <div id="profile" class="row">
+            <div class="col-1">
+                 <div id="back">
+                     <a href="/file/"><img id="back_icon" src="{% static 'image/back.png'%}" alt=""></a>
+                 </div>
+               </div>
+                 <div class="col">
+                     <div class="row">
+                         <div class="col-1">
+                            <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                         </div>
+                         <div class="col-9">
+                            <span>文案小能手</span></br>
+                            <span>兼职:{{request.session.username}}</span>
+                         </div>
+                         <div class="col-2">
+                            <a id="logout" href="/file/login/logoutAction">
+                                <img id="logout_icon" src="{% static 'image/log-out.png'%}" alt="">退出
+                            </a>
+                         </div>
+                     </div> 
+                 </div>
+         </div>
+         <div id="service" class="row">
                   <!-- upload -->
-                   <div id="file-_upload">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page"><a href="/file/upload/">文案提交</a></li>
-                        </ol>
-                      </nav>
-                      请选择你要上传的excel文件。
+                  <div id="upload">
                       <form class="" action="/file/upload/excel/" method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
                         <input type="file" name="excel_data">
-                        <p></p>
-                        <input type="submit" class="btn btn-primary" value="上传">
-                     </form>
-                   </div>
-             </div>
-        </div> 
-        <!--        container-->
-    </div>
+                        <p>请选择要上传的excel文件</p>
+                        <input id="upload_button" type="submit" class="btn btn-primary" value="上传">
+                     </form>       
+                  </div>   
+            </div>
+            <div id="progress_bar" class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25%" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+     </div>
 
 
 
 
-
-
-
-
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
-    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/generator.js'%}"></script>
+       
+       <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+       <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+       <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
