@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from . import testdb, search
+from . import testdb, search, test
 
 urlpatterns = [
     # db
@@ -11,4 +11,6 @@ urlpatterns = [
     path('search/', search.search),
     path('search-post/', search.search_post),
 
+    # test
+    path('post/', test.testPost)
 ]

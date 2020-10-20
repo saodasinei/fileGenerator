@@ -39,7 +39,7 @@ $(document).ready(function(){
 //          console.log(new_file);
 //          console.log(number);
      $.ajax({
-        method:"POSt",
+        method:"POST",
         url:'/file/upload/save/',
         port:8000,
         dataTYpe:'json',
@@ -91,5 +91,6 @@ $(document).ready(function(){
                }
           });
       });
+
 
 });

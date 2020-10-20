@@ -50,38 +50,66 @@
     height:15px;
 }
 
-/* 右侧内容 */
-/* 显示/隐藏 */
-.content_active{
-   display:block;
+/* 文案审查内容栏 */
+#content{
+   padding-top:30px;
+   padding-left:60px;
+   padding-right:60px;
 }
-.content_disactive{
-   display:none;
+.historyTitle{
+   margin-top:10px;
+   background-color:#c9c9c9;
+}
+.historyList{
+   margin-top:10px;
+   background-color:#ededed;
+}
+.edit{
+   background-color:#03adfc;
+}
+.edit img{
+   width:15px;
+   height:15px;
+}
+.fileList{
+   background-color:#ededed;
+   margin-top:10px;
+   padding-left:15px;
+}
+#file{
+   height:800px;
+   overflow-y:scroll;
+   overflow-x:hidden;
+
+}
+.profile_content{
+   background-color:#ededed;
+   margin-right:10px;
+   padding:5px;
+   border-radius:10px;
 }
 
-/* 上传历史列表 */
-#upload_list{
-   border-style:solid;
-   border-width:1px;
-   border-color:#cccccc;
-   padding:0px;
-   padding-top:10px;
+/* 兼职管理 */
+#parttimerList{
+   padding-top:30px;
+   padding-left:60px;
+   padding-right:60px;
 }
-#upload_list input{
-   width:270px;
-   height:30px;
-   margin-left:25px;
+.parttimerTitle{
+   background-color:#c9c9c9;
+   margin-top:10px;
 }
-.upload_list_item{
-   height:55px;
-   text-align:center;
-   padding-top:15px;
+.parttimerContent{
+   background-color:#ededed;
+   margin-top:10px;
 }
-.mouseover{
-   background-color:#cccccc;
+.parttimerContent a{
+   background-color:#487FFE;
 }
-.selected{
-   background-color:#e6e6e6;
+.parttimerContent img{
+   width:10px;
+   height:10px;
 }
-
-
+#addParttimer{
+   margin-top:10px;
+}

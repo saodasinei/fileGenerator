@@ -39,38 +39,44 @@
               </div>
         </div>
         <div id="files" class="row">
-              <div class="col-6">
+              <div class="col-1">
+                <h6>模版</h6>
+            </div>
+              <div class="col">
                   <h6>文案</h6>
               </div>
-              <div class="col">
+              <div class="col-1">
                   <h6>状态</h6>
               </div>
-                <div class="col">
+                <div class="col-1">
                     <h6>编辑</h6>
                 </div>
                 {% for item in content %}
                 <div class="row file">
-                  <div class="col-6 newfile_content">
-                        {{item.content}}
+                  <div class="col-1 newfile_content">
+                    {{item.id}}
+                 </div>
+                  <div class="col newfile_content">
+                        {{item.content|linebreaksbr}}
                   </div>
                     {% if item.status == None %}
-                  <div class="col">
+                  <div class="col-1">
                         未知
                   </div>
                     {% elif item.status == True %}
-                  <div style="color:green;" class="col">
+                  <div style="color:green;" class="col-1">
                         通过
                    </div>
                     {% elif item.status == False %}
-                   <div style="color:red;" class="col">
+                   <div style="color:red;" class="col-1">
                         未通过
                    </div>
                     {% endif %}
-                    <div class="col">
+                    <div class="col-1">
                         <a class="btn btn-sm c_edit" href="#"><img src="{% static 'image/edit.png'%}" alt=""></a>
                     </div>
                 </div>
-              {% endfor%}
+              {% endfor %}
         </div>
      </div>
 

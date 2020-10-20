@@ -19,64 +19,134 @@
                     <li id="file_history" class=""><a href="/file/manage/"><img class="side_img" src="{% static 'image/manage.png'%}" alt="">文案管理</a></li>
                   <li id="file_upload" class=""><a href="/file/manage/review"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案审查</a></li>
                   <li id="file_history" class="listactive"><a href="/file/manage/parttimer/"><img class="side_img" src="{% static 'image/parttimer.png'%}" alt="">兼职管理</a></li>
-
                 </ul>
+                <a id="logout" href="/file/login/logoutAction">
+                    <img id="logout_logo" src="{% static 'image/quit.png'%}" alt="">退出
+                </a>
             </div>
+           
+           <div id="parttimerList" class="col">
+            <button id="addParttimer" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal" href="#">添加兼职</button>
+                <div class="row parttimerTitle">
+                    <div class="col">id</div>
+                    <div class="col">用户名</div>
+                    <div class="col">姓名</div>
+                    <div class="col">操作</div>
+                </div>
+                {% for person in parttimer %}
+                <div class="row parttimerContent">
+                    <div class="col">{{person.id}}</div>
+                    <div class="col personName">{{person.username}}</div>
+                    <div class="col">{{person.name}}</div>
+                    <div class="col">
+                        <a class="btn btn-sm editParttimer" data-toggle="modal" data-target="#editModal" href="#"><img src="{% static 'image/edit.png'%}" alt=""></a>
+                        <a class="btn btn-sm deleteParttimer" data_id="{{person.id}}" data-toggle="modal" data-target="#deleteConfirmModal" href="#"><img src="{% static 'image/delete.png'%}" alt=""></a>
+                    </div>
+                </div>
+                {% endfor %}
 
-           <div id="upload_list" class="col-2">
-
-              <input type="search" class="form-control ds-input" placeholder="搜索"/>
-
-               {% for item in uploadlist %}
-               <div id="{{item.id}}" class="upload_list_item">
-                   {{item.createdate}}/
-                   <span class="badge badge-secondary">{{item.profile_id}}</span>
-               </div>
-               {% endfor %}
-            </div>
-
-             <div id="content" class="col">
-                  <!-- upload -->
-                  <div id="file_upload">
-
-                      <div class="profile">
-                        <h4>人设</h4>
-                        <h6>编号:<span class="badge badge-secondary">{{profile.number}}</span></h6>
-                        <h6>系列:<span class="badge badge-secondary">{{profile.series}}</span></h6>
-                        <h6>自称:<span class="badge badge-secondary">{{profile.self}}</span></h6>
-                        <h6>粉丝:<span class="badge badge-secondary">{{profile.fans}}</span></h6>
-                        <h6>问候:<span class="badge badge-secondary">{{profile.greeting}}</span></h6>
-                        <h6>提问:<span class="badge badge-secondary">{{profile.question}}</span></h6>
-                        <h6>称赞:<span class="badge badge-secondary">{{profile.praise}}</span></h6>
-                        <h6>系列:<span class="badge badge-secondary">{{profile.tucao}}</span></h6>
-                        <h6>吐槽:<span class="badge badge-secondary">{{profile.koupi}}</span></h6>
-                        <h6>下期:<span class="badge badge-secondary">{{profile.next}}</span></h6>
-                        <h6>结束:<span class="badge badge-secondary">{{profile.end}}</span></h6>
-                      </div>
-
-                      <div class="file_content">
-                        <h4>文案</h4>
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">文案模版</th>
-                                  <th scope="col">新文案</th>
-                                  <th scope="col">状态</th>
-                                  <th scope="col">操作</th>
-                              </tr>
-                            </thead>
-                            <tbody id="tbody">
-
-                            </tbody>
-                          </table>
-                      </div>
-                   </div>
-             </div>
-        </div>
+           </div>
         <!--container-->
     </div>
 
+    <!-- add parttimer modal -->
+       <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">添加</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" action="/file/manage/parttimer/add/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">用户名</label>
+                      <input name="username" type="text" class="form-control" id="addUsername" placeholder="" required>
+                      <div class="invalid-feedback">
+                        请输入用户名.
+                     </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormPassword2">密码</label>
+                      <input name="password" type="password" class="form-control" id="addPassword" placeholder="" required>
+                      <div class="invalid-feedback">
+                        请输入密码.
+                     </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleDropdownFormPassword2">真实姓名</label>
+                        <input name="name" type="text" class="form-control" id="addName" placeholder="" required>
+                        <div class="invalid-feedback">
+                            请填写姓名.
+                         </div>
+                    </div>
+                    <button style="float:right" id="addSubmit" type="submit" class="btn btn-primary">确定</button>
+                  </form>
+            </div>
+         </div>
+        </div>
+    </div>
+       <!-- edit Modal -->
+       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">修改</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" action="/file/manage/parttimer/update/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">用户名</label>
+                      <input name="username" type="text" class="form-control" id="updateUsername" placeholder="" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormPassword2">密码</label>
+                      <input name="password" type="password" class="form-control" id="updatePassword" placeholder="" required>
+                      <div class="invalid-feedback">
+                         请输入密码.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleDropdownFormPassword2">真实姓名</label>
+                        <input name="name" type="text" class="form-control" id="updateName" placeholder="" required>
+                        <div class="invalid-feedback">
+                          请填写姓名.
+                        </div>
+                    </div>
+                    <button style="float:right" id="editSubmit" type="submit" class="btn btn-primary">确定</button>
+                  </form>
+            </div>
+           </div>
+        </div>
+    </div>
+    <!-- delete Modal -->
+       <div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">删除</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+             <input type="hidden" id="id" value=''>
+            您确定要删除这个兼职吗？该兼职的所有上传内容也会被删除。
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary parttimerDeleteConfirm">确定</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
 
 
@@ -84,6 +154,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/parttimer.js'%}"></script>
 </body>
 </html>

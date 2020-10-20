@@ -13,6 +13,14 @@ urlpatterns = [
      path('upload/content/', views.content),
      path('upload/delete/', views.delete),
      path('manage/', views.manage),
-     path('manage/review/', views.manage_review),
-     path('manage/parttimer/', views.manage_parttimer)
+     path('manage/login/', views.managerLogin),
+     path('manage/review/', views.manageReview),
+     path('manage/review/filter/', views.reviewFilter),
+     path('manage/review/status/', views.uploadStatus),
+     path('manage/review/content/', views.reviewContent),
+     path('manage/review/content/status/', views.contentStatus),
+     path('manage/parttimer/', views.manageParttimer),
+     path('manage/parttimer/add/', views.addParttimer),
+     path('manage/parttimer/update/', views.updateParttimer),
+     path('manage/parttimer/delete/', views.deleteParttimer)
 ]

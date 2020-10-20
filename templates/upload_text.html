@@ -42,7 +42,7 @@
          <div id="checking" class="row">    
              <div class="col">
                  <div class="checking_content">
-                    <h5>17.3%</h5>
+                    <h5>{{rate}}%</h5>
                     <span class="checking_span">
                         总文字重复比
                     </span>  
@@ -52,7 +52,7 @@
              </div>
              <div class="col">
                  <div class="checking_content">
-                    <h5>342</h5>
+                    <h5>***</h5>
                     <span class="checking_span">
                         总字数
                     </span>  
@@ -60,7 +60,7 @@
             </div>
             <div class="col">
                 <div class="checking_content">
-                    <h5>1234</h5>
+                    <h5>***</h5>
                     <span class="checking_span">
                         重复字数
                     </span>
@@ -68,7 +68,7 @@
             </div>
             <div class="col">
                 <div class="checking_content">
-                    <h5>12</h5>
+                    <h5>***</h5>
                     <span class="checking_span">
                         连续最大重复字数
                     </span>
@@ -158,14 +158,14 @@
                 <div class="col-6">
                     <div class="file_id">{{file.id}}</div>
                     <div class="file_content">
-                        {{file.file}}
+                        {{file.file|linebreaks}}
                     </div>
                 </div>
                 <div class="col-6">
                     <div>{{file.id}}</div>
                     <div class="file_content new_file">
-                        {{file.newfile}}
-                        <a class="btn edit" href=""><img src="{% static 'image/edit.png'%}" alt=""></a>
+                        {{file.newfile|linebreaks}}
+                        <a class="btn btn-sm edit" href=""><img src="{% static 'image/edit.png'%}" alt=""></a>
                     </div>
                 </div>
                {% endfor %}

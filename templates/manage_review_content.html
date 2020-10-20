@@ -1,0 +1,161 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文案查重</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/generator.css'%}">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="sidebar" class="col-1">
+                <img id="profile_photo" src="{% static 'image/profile_photo.png'%}" alt="">
+                <h6 id="user_name">超级管理员</h6>
+                <ul id="side_list" class="">
+                    <li id="file_history" class=""><a href="/file/manage/"><img class="side_img" src="{% static 'image/manage.png'%}" alt="">文案管理</a></li>
+                    <li id="file_upload" class="listactive"><a href="/file/manage/review"> <img class="side_img" src="{% static 'image/file.png'%}" alt="">文案审查</a></li>
+                    <li id="file_history" class=""><a href="/file/manage/parttimer/"><img class="side_img" src="{% static 'image/parttimer.png'%}" alt="">兼职管理</a></li>
+                </ul>
+                <a id="logout" href="/file/login/logoutAction">
+                    <img id="logout_logo" src="{% static 'image/quit.png'%}" alt="">退出
+                </a>
+            </div>
+
+            <div id="content" class="col">
+
+                <div id="profile_template" class="row">
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            编号
+                        </span>
+                        <h6 id="number">{{profile.number}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            系列
+                        </span>
+                        <h6>{{profile.series}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            自我称呼
+                        </span>
+                        <h6>{{profile.self}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            粉丝称呼
+                        </span>
+                        <h6>{{profile.fans}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            问候
+                        </span>
+                        <h6>{{profile.greeting}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            提问
+                        </span>
+                        <h6>{{profile.question}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            称赞
+                        </span>
+                        <h6>{{profile.praise}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            口癖
+                        </span>
+                        <h6>{{profile.koupi}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            吐槽
+                        </span>
+                        <h6>{{profile.tucao}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            下期
+                        </span>
+                        <h6>{{profile.next}}</h6>
+                    </div>
+                    <div class="profile_content">
+                        <span class="profile_span">
+                            结束
+                        </span>
+                        <h6>{{profile.end}}</h6>
+                    </div>          
+                </div>
+
+
+                <div class="row historyTitle">
+                    <div class="col-2">
+                        模版
+                    </div>
+                    <div class="col">
+                        内容
+                    </div>
+                    <div class="col-2">
+                        状态
+                    </div>
+                 </div>
+                 <div id="file" class="row">
+                      
+                    {% for item in content %}
+                        <div class="row fileList">
+                            <div id="{{item.id}}" class="col-2 fileId">
+                                {{item.id}}
+                            </div>
+                            <div class="col">
+                                {{item.content}}
+                            </div>
+                            <div class="col-2">
+                                <select class="uploadFileStatus">
+                                    {% if item.status == None %}
+                                      <option value="">未知</option>
+                                      <option value="1">通过</option>
+                                      <option value="0">未通过</option>
+                                    {% elif item.status == True %}
+                                      <option value="1">通过</option>
+                                      <option value="">未知</option>
+                                      <option value="0">未通过</option>
+                                    {% elif item.status == False %}
+                                      <option value="0">未通过</option>
+                                      <option value="1">通过</option>
+                                      <option value="">未知</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                         </div>  
+                 {% endfor %}
+
+                 </div>
+
+                     
+            </div>
+           
+             
+        </div>
+        <!--container-->
+    </div>
+
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" rel="external nofollow" ></script>
+    <script src="{% static 'js/review.js'%}"></script>
+</body>
+</html>

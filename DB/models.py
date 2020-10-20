@@ -63,7 +63,7 @@ class UploadFile(models.Model):
     upload_id = models.ForeignKey(UploadList, on_delete=models.CASCADE, verbose_name="上传ID")
     template_id = models.ForeignKey(File, on_delete=models.CASCADE, verbose_name="文案模版")
     content = models.TextField(u'内容', default='请添加内容')
-    status = models.BooleanField(u'状态', choices=((0, '通过'), (1, '不通过')), null=True)
+    status = models.BooleanField(u'状态', choices=((0, '不通过'), (1, '通过')), null=True)
 
     # def __str__(self):
     #     return self.id

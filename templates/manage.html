@@ -22,56 +22,9 @@
 
                 </ul>
             </div>
-
-           <div id="upload_list" class="col-2">
-
-              <input type="search" class="form-control ds-input" placeholder="搜索"/>
-
-               {% for item in uploadlist %}
-               <div id="{{item.id}}" class="upload_list_item">
-                   {{item.createdate}}/
-                   <span class="badge badge-secondary">{{item.profile_id}}</span>
-               </div>
-               {% endfor %}
-            </div>
-
+            
              <div id="content" class="col">
-                  <!-- upload -->
-                  <div id="file_upload">
-
-                      <div class="profile">
-                        <h4>人设</h4>
-                        <h6>编号:<span class="badge badge-secondary">{{profile.number}}</span></h6>
-                        <h6>系列:<span class="badge badge-secondary">{{profile.series}}</span></h6>
-                        <h6>自称:<span class="badge badge-secondary">{{profile.self}}</span></h6>
-                        <h6>粉丝:<span class="badge badge-secondary">{{profile.fans}}</span></h6>
-                        <h6>问候:<span class="badge badge-secondary">{{profile.greeting}}</span></h6>
-                        <h6>提问:<span class="badge badge-secondary">{{profile.question}}</span></h6>
-                        <h6>称赞:<span class="badge badge-secondary">{{profile.praise}}</span></h6>
-                        <h6>系列:<span class="badge badge-secondary">{{profile.tucao}}</span></h6>
-                        <h6>吐槽:<span class="badge badge-secondary">{{profile.koupi}}</span></h6>
-                        <h6>下期:<span class="badge badge-secondary">{{profile.next}}</span></h6>
-                        <h6>结束:<span class="badge badge-secondary">{{profile.end}}</span></h6>
-                      </div>
-
-                      <div class="file_content">
-                        <h4>文案</h4>
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">文案模版</th>
-                                  <th scope="col">新文案</th>
-                                  <th scope="col">状态</th>
-                                  <th scope="col">操作</th>
-                              </tr>
-                            </thead>
-                            <tbody id="tbody">
-
-                            </tbody>
-                          </table>
-                      </div>
-                   </div>
+                建设中
              </div>
         </div>
         <!--container-->
